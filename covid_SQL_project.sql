@@ -1,8 +1,6 @@
 /*
 Covid 19 Data Exploration 
-Skills used: Joins, CTE's, Temp Tables, Windows Functions, Aggregate Functions, Creating Views, Converting Data Types
 */
-# 
 
 Select *
 From PortfolioProject..CovidDeaths
@@ -10,7 +8,7 @@ Where continent is not null
 order by 3,4
 
 
--- Select Data that we are going to be starting with
+-- 
 
 Select Location, date, total_cases, new_cases, total_deaths, population
 From PortfolioProject..CovidDeaths
@@ -56,9 +54,6 @@ Group by Location
 order by TotalDeathCount desc
 
 
-
--- BREAKING THINGS DOWN BY CONTINENT
-
 -- Showing contintents with the highest death count per population
 
 Select continent, MAX(cast(Total_deaths as int)) as TotalDeathCount
@@ -69,9 +64,7 @@ Group by continent
 order by TotalDeathCount desc
 
 
-
 -- GLOBAL NUMBERS
-
 Select SUM(new_cases) as total_cases, SUM(cast(new_deaths as int)) as total_deaths, SUM(cast(new_deaths as int))/SUM(New_Cases)*100 as DeathPercentage
 From PortfolioProject..CovidDeaths
 --Where location like '%states%'
@@ -141,8 +134,6 @@ Join PortfolioProject..CovidVaccinations vac
 
 Select *, (RollingPeopleVaccinated/Population)*100
 From #PercentPopulationVaccinated
-
-
 
 
 -- Creating View to store data for later visualizations
